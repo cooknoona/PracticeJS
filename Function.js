@@ -124,7 +124,23 @@ function checkAnimalMoodCallBack(mood, happyAction, sadAction) {
     sadAction();
   }
 }
-checkAnimalMoodCallBack("happy", dogDance, catCry); // () => console.log("😭 사람이 웁니다.") 임의 함수를 등록해서 바로 출력 할 수 있다, 재사용성이 없는 함수를 주로 이용
+// () => console.log("😭 사람이 웁니다.") 임의 함수를 등록해서 바로 출력 할 수 있다, 재사용성이 없는 함수를 주로 이용
 // 등록된 함수는 Line 98 ~ 106 까지와 같다.
+checkAnimalMoodCallBack("happy", dogDance, catCry);
 
 // 타이머 설정과 CallBack 함수
+const buyToy = (item, price, quantity, callBack) => {
+  console.log("🧒 아이가 '" + item + "' 장난감을 " + quantity + "개 골라서 엄마에게 가져갔습니다.");
+  setTimeout(() => {
+    console.log("💰 계산이 필요합니다.");
+    let total = price * quantity;
+    callBack(total);
+  }, 2000);
+};
+
+const pay = (total) => {
+  console.log("엄마: '지불할 금액은 " + total + "원입니다.'");
+  console.log("🧒 아이: '와! 고마워요, 엄마!' 🎉");
+};
+
+buyToy("공룡장난감", 3000, 10, pay);
