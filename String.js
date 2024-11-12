@@ -60,3 +60,12 @@ console.log(newStr);
 // charAt() : 문자열에서 특정 인덱스의 해당하는 문자 하나를 반환 하는 함수
 const addr = "서울시 강남구 역삼동";
 console.log(addr.charAt(4));
+
+// charCodeAt() : 문자열의 순서
+const addr2 = "서울시 강남구 역삼동";
+console.log(addr2.charCodeAt(3));
+
+// split()
+let birthday = "1997-06-12";
+let arr2 = birthday.split("-"); // 하이픈(-)을 기준으로 문자열을 분리해서 배열로
+console.log(arr2); // ["1997","06","02"]
