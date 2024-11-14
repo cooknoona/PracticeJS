@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="input-field" onfocus="focusEvent()" onblur="blurEvent()" />
+    <button class="btn1">클릭</button>
+    <button class="btn2">클릭</button>
+    <button onclick="btnClick()">클릭</button>
+    <script>
+      const inputField = document.querySelector("#input-box");
+
+      function focusEvent() {
+        inputField.style.background = "orange";
+      }
+
+      function blurEvent() {
+        inputField.style.background = "green";
+      }
+
+      // Property listener 방식으로 이벤트 등록하기
+      const btn1 = document.querySelectorAll(".btn1");
+      btn.onclick = () => {
+        alert("버튼 1이 클릭 되었습니다.");
+      };
+
+      // 이벤트 등록 메서드로 이벤트 등록하기
+      const btn2 = document.querySelector(".btn2");
+      btn2.addEventListener("click", () => {
+        alert("버튼 2가 눌러 졌습니다.");
+      });
+
+      // 태그 내에 직접 onlick을 호출 하는것
+      function btnClick() {
+        alert("버튼 3가 눌러 졌습니다.");
+      }
+    </script>
+  </body>
+</html>

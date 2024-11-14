@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #buttons {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 40px;
+        gap: 7px;
+      }
+
+      .btn {
+        width: 155px;
+        height: 45px;
+        border: none;
+        font-size: 15px;
+        color: white;
+      }
+
+      #container {
+        width: 500px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        height: 500px;
+        background-color: orange;
+        border-radius: 5%;
+      }
+
+      #green {
+        background-color: green;
+      }
+
+      #orange {
+        background-color: orange;
+      }
+
+      #purple {
+        background-color: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="buttons">
+      <!-- <button id="green" class="btn" onclick="switchGr()">Green</button>
+      <button id="orange" class="btn" onclick="switchOr()">Orange</button>
+      <button id="purple" class="btn" onclick="switchPu()">Purple</button> -->
+      <button id="green" class="btn">Green</button>
+      <button id="orange" class="btn">Orange</button>
+      <button id="purple" class="btn">Purple</button>
+    </div>
+    <div id="container"></div>
+    <script>
+      //     function switchGr() {
+      //       document.getElementById("container").style.backgroundColor = "green";
+      //     }
+
+      //     function switchOr() {
+      //       document.getElementById("container").style.backgroundColor = "orange";
+      //     }
+
+      //     function switchPu() {
+      //       document.getElementById("container").style.backgroundColor = "purple";
+      //     }
+
+      function switchCol(color) {
+        const container = document.getElementById("container");
+        container.style.backgroundColor = color;
+      }
+
+      const buttons = document.getElementsByClassName("btn");
+
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", (event) => {
+          const color = event.target.id;
+          switchCol(color);
+        });
+      }
+    </script>
+  </body>
+</html>
