@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+        margin: 0;
+      }
+
+      #container {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .inputPlace {
+        margin-bottom: 15px;
+      }
+
+      .inputPlace input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        outline: none;
+      }
+
+      .inputPlace input:focus {
+        border-color: #4caf50;
+      }
+
+      .feedback {
+        top: 100%; /* Aligns feedback directly under input */
+        left: 0;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+
+      .feedback span {
+        font-size: 14px;
+      }
+
+      #button {
+        text-align: center;
+      }
+
+      #submitBtn {
+        background-color: grey;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>회원 가입</h1>
+      <div id="content">
+        <div class="inputPlace"><input type="text" id="id" placeholder="아이디" /></div>
+        <div class="feedback" id="idFeedback"></div>
+        <div class="inputPlace"><input type="text" id="pw" placeholder="비밀번호" /></div>
+        <div class="feedback" id="pwFeedback"></div>
+        <div class="inputPlace"><input type="text" id="email" placeholder="이메일" /></div>
+        <div class="feedback" id="emailFeedback"></div>
+        <div class="inputPlace"><input type="text" id="tel" placeholder="전화번호" /></div>
+        <div class="feedback" id="telFeedback"></div>
+        <div id="button">
+          <button id="submitBtn">가입 요청</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const inputID = document.getElementById("id");
+      const inputPW = document.getElementById("pw");
+      const inputEmail = document.getElementById("email");
+      const inputTel = document.getElementById("tel");
+      const submitBtn = document.getElementById("submitBtn");
+
+      const idFeelback = document.getElementById("idFeedback");
+      const pwFeelback = document.getElementById("pwFeedback");
+      const emailFeelback = document.getElementById("emailFeedback");
+      const telFeelback = document.getElementById("telFeedback");
+
+      const idFormat = /^[a-zA-Z][a-zA-Z0-9_-]{3,15}$/;
+      const pwFormat = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+      const emailFormat = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const telFormat = /^(010|011|016|017|018|019)[-]?\d{3,4}[-]?\d{4}$/;
+
+      function idValidateCheck() {
+        if (idFormat.test(inputID.value) === true) {
+          idFeelback.textContent = "사용 가능 합니다.";
+          idFeelback.style.color = "green";
+        } else {
+          idFeelback.textContent = "사용 불가능 합니다.";
+          idFeelback.style.color = "red";
+        }
+        activeSubmitBtn();
+      }
+
+      function pwValidateCheck() {
+        if (pwFormat.test(inputPW.value) === true) {
+          pwFeelback.textContent = "사용 가능 합니다.";
+          pwFeelback.style.color = "green";
+        } else {
+          pwFeelback.textContent = "사용 불가능 합니다.";
+          pwFeelback.style.color = "red";
+        }
+        activeSubmitBtn();
+      }
+
+      function emailValidateCheck() {
+        if (emailFormat.test(inputEmail.value) === true) {
+          emailFeelback.textContent = "사용 가능 합니다.";
+          emailFeelback.style.color = "green";
+        } else {
+          emailFeelback.textContent = "사용 불가능 합니다.";
+          emailFeelback.style.color = "red";
+        }
+        activeSubmitBtn();
+      }
+
+      function telValidateCheck() {
+        if (telFormat.test(inputTel.value) === true) {
+          telFeelback.textContent = "사용 가능 합니다.";
+          telFeelback.style.color = "green";
+        } else {
+          telFeelback.textContent = "사용 불가능 합니다.";
+          telFeelback.style.color = "red";
+        }
+        activeSubmitBtn();
+      }
+
+      function activeSubmitBtn() {
+        if (idFormat.test(inputID.value) && pwFormat.test(inputPW.value) && emailFormat.test(inputEmail.value) && telFormat.test(inputTel.value)) {
+          submitBtn.disabled = false;
+          submitBtn.style.backgroundColor = "blue";
+        } else {
+          submitBtn.disabled = true;
+          submitBtn.style.backgroundColor = "grey";
+        }
+      }
+
+      inputID.addEventListener("input", idValidateCheck);
+      inputPW.addEventListener("input", pwValidateCheck);
+      inputEmail.addEventListener("input", emailValidateCheck);
+      inputTel.addEventListener("input", telValidateCheck);
+      submitBtn.addEventListener("input", activeSubmitBtn);
+    </script>
+  </body>
+</html>
